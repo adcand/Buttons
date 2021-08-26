@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Buttons</title>
+  </head>
+
+  <body>
+    <main class="slider-container">
+      <button class="arrow left" tabindex="1"></button>
+      <button class="arrow right" tabindex="2"></button>
+
+      <div class="slider">
+        <div class="button-container btn-cont-1">
+          <button class="btn btn-1 btn-1--add-slider" tabindex="-1">Button</button>
+        </div>
+
+        <div class="button-container btn-cont-2">
+          <button class="btn btn-2 btn-2--move-wave" tabindex="-1">Button</button>
+        </div>
+
+        <div class="button-container btn-cont-3">
+          <button class="btn btn-3 btn-3--slide-circle" tabindex="-1">Button</button>
+        </div>
+
+        <div class="button-container btn-cont-4">
+          <button class="btn btn-4 btn-4--add-transform" tabindex="-1">Button</button>
+        </div>
+
+        <div class="button-container btn-cont-5">
+          <button data-hover-text="Button" class="btn btn-5" tabindex="-1">
+            <span class="btn-5__text btn-5--slide-text">Cool!</span>
+          </button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

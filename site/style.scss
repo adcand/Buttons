@@ -1,0 +1,289 @@
+@use "../abstracts/index" as *;
+
+$arrow-clr: rgba(202, 204, 230, 0.4);
+
+$light-clr: #fff;
+$shadow-clr: #c4bcc0;
+
+$btn1-clr: #ffadce;
+$btn1-hover-clr: #fa287c;
+
+$btn2-bg-clr: #2cb5f5;
+$btn2-hover-clr: rgba(170, 219, 240, 0.5);
+
+$btn-3-clr: #9ee6ca;
+$btn3-bg-clr: #e3ffe5;
+$btn3-font-clr: rgba(68, 87, 69, 0.4);
+
+$btn5-clr: #a06dde;
+$btn5-bg-clr: #ffdf87;
+
+:root {
+  font-size: 20px;
+  scrollbar-width: none;
+  font-family: "Roboto", sans-serif;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.arrow {
+  position: fixed;
+  cursor: pointer;
+  height: 30%;
+  width: 2rem;
+  border: none;
+  background: $arrow-clr;
+  @extend %flex-center;
+  outline: none;
+  transition: 200ms;
+  z-index: 2;
+
+  @include pseudo() {
+    font-size: 2rem;
+    color: $light-clr;
+    background: transparent;
+  }
+
+  &:focus,
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.left {
+  left: 0;
+  @include pseudo($cont: "<");
+}
+
+.right {
+  right: 0;
+  @include pseudo($cont: ">");
+}
+
+.slider-container {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  @extend %flex-center-v;
+  z-index: 1;
+}
+
+.slider {
+  width: 500vw;
+  height: 100%;
+  @extend %flex-center;
+  transition: 300ms;
+}
+
+.button-container {
+  height: 100%;
+  width: 100vw;
+  @extend %flex-center;
+}
+
+.btn-cont-1 {
+  background: $light-clr;
+}
+
+.btn-cont-2 {
+  background: $btn2-bg-clr;
+}
+
+.btn-cont-3 {
+  background: $btn3-bg-clr;
+}
+
+.btn-cont-4 {
+  background: $light-clr;
+}
+
+.btn-cont-5 {
+  background: $btn5-bg-clr;
+}
+
+.btn {
+  all: unset;
+  cursor: pointer;
+  outline: none;
+  height: 3rem;
+  width: 6rem;
+  position: relative;
+  font-size: 1rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.1rem;
+
+  @include pseudo() {
+    display: block;
+    transition: 350ms;
+  }
+}
+
+.btn-1 {
+  border: none;
+  background: $btn1-clr;
+  color: $light-clr;
+  border-radius: 0.3rem;
+  box-shadow: 0 0.15rem 0.3rem $shadow-clr;
+  font-weight: $medium;
+
+  @include pseudo() {
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 0;
+    background: $btn1-hover-clr;
+    border-radius: 0.3rem;
+    z-index: -1;
+  }
+
+  &--add-slider:hover {
+    @include pseudo() {
+      width: 100%;
+    }
+  }
+}
+
+.btn-2 {
+  color: $light-clr;
+  border: solid 0.15rem $light-clr;
+  background: transparent;
+  text-transform: uppercase;
+  font-weight: $bold;
+  overflow: hidden;
+
+  @include pseudo() {
+    width: 100%;
+    height: 40%;
+    bottom: 0;
+    left: 0;
+    background: $btn2-hover-clr;
+    z-index: -1;
+    border-top-left-radius: 100%;
+    border-top-right-radius: 5%;
+  }
+
+  &--move-wave:hover {
+    @include pseudo() {
+      animation: wave 2000ms infinite linear;
+    }
+  }
+}
+
+.btn-3 {
+  border: solid thin $btn-3-clr;
+  color: $btn3-font-clr;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  font-weight: $small;
+
+  @include pseudo() {
+    background: $btn-3-clr;
+    height: 90%;
+    width: 45%;
+    left: 0.1rem;
+    border-radius: 50%;
+    z-index: -1;
+  }
+
+  &--slide-circle:hover {
+    @include pseudo() {
+      animation: move 400ms forwards;
+    }
+  }
+}
+
+.btn-4 {
+  background: $light-clr;
+  border: thin solid #000;
+  font-weight: $small;
+  position: relative;
+  color: #000;
+  transition: 300ms;
+  padding: 1rem;
+  width: 3rem;
+
+  &--add-transform:hover {
+    transform: scale(1.2);
+    border-radius: 50%;
+    background: #000;
+    color: $light-clr;
+  }
+}
+
+.btn-5 {
+  border: solid 0.1rem $btn5-clr;
+  overflow: hidden;
+  background: transparent;
+
+  @include pseudo($pos: before, $cont: attr(data-hover-text)) {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    transition: 300ms;
+    font-weight: $regular;
+    background: transparent;
+    color: $btn5-clr;
+  }
+
+  &__text {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transform: translateX(-100%);
+    border: none;
+    @extend %flex-center;
+    transition: 300ms;
+    z-index: 2;
+    color: $btn5-clr;
+    opacity: 0;
+    font-weight: $regular;
+    background: transparent;
+  }
+
+  &:hover {
+    .btn-5--slide-text {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    @include pseudo($pos: before) {
+      opacity: 0;
+    }
+  }
+}
+
+@keyframes wave {
+  25% {
+    transform: scaleY(2);
+  }
+
+  50% {
+    transform: scaleY(1.7);
+  }
+
+  75% {
+    transform: scaleY(1);
+    border-top-left-radius: 80%;
+    border-top-right-radius: 10%;
+  }
+
+  to {
+    border-top-left-radius: 100%;
+    border-top-right-radius: 5%;
+  }
+}
+
+@keyframes move {
+  to {
+    left: 50%;
+  }
+}
